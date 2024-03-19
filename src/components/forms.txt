@@ -1,0 +1,39 @@
+// SubmissionForm.jsx
+import React, { useState } from 'react';
+
+const SubmissionForm = ({ onSubmit }) => {
+  const [username, setUsername] = useState('');
+  const [language, setLanguage] = useState('javascript');
+  const [stdin, setStdin] = useState('');
+  const [code, setCode] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newSnippet = { username, language, stdin, code };
+    onSubmit(newSnippet);
+    setUsername('');
+    setLanguage('javascript');
+    setStdin('');
+    setCode('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Username:</label>
+      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <label>Language:</label>
+      <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        {/* Add options for other languages */}
+      </select>
+      <label>Standard Input:</label>
+      <textarea value={stdin} onChange={(e) => setStdin(e.target.value)} />
+      <label>Code:</label>
+      <textarea value={code} onChange={(e) => setCode(e.target.value)} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default SubmissionForm;

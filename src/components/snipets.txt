@@ -1,0 +1,29 @@
+// CodeSnippetList.jsx
+import React from 'react';
+
+const CodeSnippetList = ({ snippets }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Language</th>
+          <th>Standard Input</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        {snippets.map((snippet) => (
+          <tr key={snippet.username + snippet.code}>
+            <td>{snippet.username}</td>
+            <td>{snippet.language}</td>
+            <td>{snippet.stdin}</td>
+            <td>{snippet.code.substring(0, 100)}...</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default CodeSnippetList;
